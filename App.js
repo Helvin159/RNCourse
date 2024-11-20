@@ -1,20 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
+
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.body}>
+      <View style={styles.header}>
+        <Text style={styles.heading}>Yerr!!!!</Text>
+      </View>
+      <View style={styles.buttonWrapper}>
+        <Button title="Click here" onPress={() => alert('Wake the FUCK UP!!!')}  />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  buttonWrapper: {
+    backgroundColor: '#000',
+    borderRadius: 10,
+    overflow: 'hidden',
+    alignContent: 'space-between',
+    marginBottom: 32
   },
+  heading: {
+    fontSize: 24,
+    fontWeight: 600,
+  },
+  header: {
+    padding: 16,
+    marginTop: 48,
+    alignItems: 'center'
+  },
+  body: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingLeft: 8,
+    paddingRight: 8
+  }
 });
