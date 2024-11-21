@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { AppContext } from '../context/AppContext';
 
 const ListItem = (props) => {
   const { text, id } = props;
+  const { deleteGoalHandler } = useContext(AppContext);
 
-  const deleteGoalHandler = () => {
-    props.deleteGoalHandler(id);
+  const onDeleteGoalHandler = () => {
+    deleteGoalHandler(id);
   };
 
   return (
@@ -13,7 +15,7 @@ const ListItem = (props) => {
       <Pressable
         android_ripple={{ color: '#dddddd' }}
         style={({ pressed }) => pressed && styles.pressedItem}
-        onPress={deleteGoalHandler.bind(this, id)}
+        onPress={onDeleteGoalHandler.bind(this, id)}
       >
         <Text style={styles.listItemText}>{text}</Text>
       </Pressable>

@@ -17,7 +17,7 @@ const GoalInput = (props) => {
     setEnteredGoal(value);
   };
 
-  const addGoalHandler = () => {
+  const onAddGoalHandler = () => {
     props.addGoalHandler(enteredGoal);
     setTimeout(() => setEnteredGoal(''), 35);
   };
@@ -42,12 +42,16 @@ const GoalInput = (props) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title='Add Goal' color={'#fff'} onPress={addGoalHandler} />
+            <Button
+              title='Add Goal'
+              color={'#fff'}
+              onPress={onAddGoalHandler}
+            />
           </View>
           <View style={styles.cancelButton}>
             <Button
               title='Cancel'
-              color={'#fff'}
+              color={'#990021'}
               onPress={props.closeAddGoalHandler}
             />
           </View>
