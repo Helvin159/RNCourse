@@ -1,5 +1,14 @@
-import React, { useState } from 'react'
-import { Button, StyleSheet, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Button,
+  Image,
+  Modal,
+  StyleSheet,
+  TextInput,
+  View
+} from 'react-native';
+
+import animeJpeg from '../assets/Create_a_dark_and_mystical_anime-style_scene_inspi.jpg';
 
 const GoalInput = (props) => {
   const [enteredGoal, setEnteredGoal] = useState('');
@@ -9,40 +18,80 @@ const GoalInput = (props) => {
   };
 
   const addGoalHandler = () => {
-    props.addGoalHandler(enteredGoal)
-    setTimeout(() => setEnteredGoal(''), 35)
-  }
+    props.addGoalHandler(enteredGoal);
+    setTimeout(() => setEnteredGoal(''), 35);
+  };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder='Your course goal!'
-        value={enteredGoal}
-        onChangeText={goalInputHandler}
-      />
-      <Button title='Add Goal' color={'#000'} onPress={addGoalHandler} />
-    </View>
-  )
-}
+    <Modal animationType='slide' visible={props.showModal}>
+      <View style={styles.inputContainer}>
+        <Image
+          source={animeJpeg}
+          style={{
+            width: 100,
+            height: 100,
+            alignSelf: 'center',
+            marginBottom: 8
+          }}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder='Your course goal!'
+          value={enteredGoal}
+          onChangeText={goalInputHandler}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title='Add Goal' color={'#fff'} onPress={addGoalHandler} />
+          </View>
+          <View style={styles.cancelButton}>
+            <Button
+              title='Cancel'
+              color={'#fff'}
+              onPress={props.closeAddGoalHandler}
+            />
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+};
 
-export default GoalInput
+export default GoalInput;
 
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 24,
     borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
+    borderBottomColor: '#cccccc',
+    backgroundColor: '#000'
   },
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
     width: '70%',
     marginRight: 8,
-    padding: 8
+    padding: 16,
+    borderRadius: 8,
+    fontSize: 18,
+    backgroundColor: '#ffffff'
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    padding: 16,
+    width: '79%'
+  },
+  button: {
+    width: '40%',
+    alignContent: 'center'
+  },
+  cancelButton: {
+    width: '40%',
+    alignContent: 'center'
+  }
 });
