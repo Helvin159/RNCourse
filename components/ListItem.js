@@ -1,22 +1,23 @@
-import React from 'react'
+import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 const ListItem = (props) => {
-  const { text, index } = props;
+  const { text, id } = props;
 
-  const  deleteGoalHandler = () => { props.deleteGoalHandler() }
+  const deleteGoalHandler = () => {
+    props.deleteGoalHandler(id);
+  };
 
   return (
     <Pressable onPress={deleteGoalHandler}>
-      <View style={styles.listItem} key={index}>
+      <View style={styles.listItem} key={id}>
         <Text style={styles.listItemText}>{text}</Text>
       </View>
     </Pressable>
   );
-}
+};
 
-export default ListItem
-
+export default ListItem;
 
 const styles = StyleSheet.create({
   listItem: {
