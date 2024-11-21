@@ -17,7 +17,9 @@ export default function App() {
   };
 
   const deleteGoalHandler = (id) => {
-    console.log(`Delete, ${id}`);
+    const newArr = courseGoals.filter((i) => i.id !== id);
+
+    setCourseGoals(newArr);
   };
 
   return (
